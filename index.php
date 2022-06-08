@@ -1,7 +1,8 @@
 <?php
-session_start();
-if(isset($_SESSION["username"])) header("location: home.php");
+    session_start();
+    if(isset($_SESSION["username"])) header("location: HomePage.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,12 +21,11 @@ if(isset($_SESSION["username"])) header("location: home.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://scontent-xsp1-3.xx.fbcdn.net/v/t1.15752-9/209723446_554872582305942_1897949822701946274_n.png?_nc_cat=107&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeGd8UM5oa2k9c4-Rn9Zzf2iEgVp1r5maCYSBWnWvmZoJl9IVrmPqyfBN94rSMaXWJ_D0wBoX42wPW91VajIdxIS&_nc_ohc=BDSDXzzNYG8AX-za5Lp&_nc_ht=scontent-xsp1-3.xx&oh=2abbb5b9fc0abcfaa5b06a1f921cab9c&oe=60E4CED1">
-    
+    <title>My Tee Clothing Shop</title>
 </head>
 <body>
     <?php
-        include('login.php');
-       
+        include('loginform.php');     
     ?>
 </body>
 </html>

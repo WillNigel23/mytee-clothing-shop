@@ -57,7 +57,7 @@ body{
 
 /* header */
 #header{
-    background: url('background.png') top/cover no-repeat;
+    background: url('../img/background.png') top/cover no-repeat;
 }
 .carousel-inner h1{
     font-size: 60px;
@@ -122,7 +122,7 @@ body{
 
 /* offers */
 #offers{
-    background: url(../login/finaloffer.jpg) center/cover no-repeat;
+    background: url(../img/finaloffer.jpg) center/cover no-repeat;
 }
 #offers .row{
     min-height: 100vh;

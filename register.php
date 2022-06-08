@@ -4,7 +4,7 @@
 	<title>Register</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link href="style.css" rel="stylesheet" type="text/css">
+	<link href="styles/style.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -21,7 +21,7 @@
 				<div class="col-lg-9 col-md-12 col-sm-8 col-xs-12 infinity-form">
 					<!-- Company Logo -->
 					<div class="text-center mb-3 mt-5">
-						<img src="finaltee.png" width="150px">
+						<img src="img/finaltee.png" width="150px">
 					</div>
 					<div class="text-center mb-4">
 				    <h4>Create an account</h4>
@@ -48,14 +48,6 @@
 						</div>
 						<div class="text-center mb-2">
 		         	<div class="text-center mb-2 text-black">or register with</div>
-		          <!-- Facebook Button -->
-		          <a href="" class="btn btn-social btn-facebook">facebook</a>
-
-		          <!-- Google Button -->
-							<a href="" class="btn btn-social btn-google">google</a>
-
-							<!-- Twitter Button -->
-							<a href="" class="btn btn-social btn-twitter">twitter</a>
 						</div>
 						<div class="text-center mb-5 text-black">Already have an account?
 							<a class="login-link" href="loginform.php">Login here</a>

@@ -1,10 +1,40 @@
+<?php
+session_start();
+$username = $_POST["username"];
+$password = $_POST["password"];
+
+$xml = new DOMDocument();
+$xml->load("database/accounts.xml");
+
+$accounts = $xml->getElementsByTagName("account");
+
+$flag = 0;
+foreach($accounts as $account) {
+	$username_db = $account->getElementsByTagName("username")->item(0)->nodeValue;
+	$password_db = $account->getElementsByTagName("password")->item(0)->nodeValue;
+    $user_id = $account->getElementsByTagName("user_id")->item(0)->nodeValue;
+	if($username === $username_db) {
+		$flag = 1;
+		if($password === $password_db) {
+            echo "login";
+			$_SESSION["username"] = $username;
+            $_SESSION["user_id"] = $user_id;
+        } else {
+		 echo "password_not_found";
+        }
+		break;
+	}
+}
+echo $flag===0 ? "username_not_found" : "";
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Login</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link href="style.css" rel="stylesheet" type="text/css">
+	<link href="styles/style.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -24,7 +54,7 @@
 				<div class="col-lg-9 col-md-12 col-sm-9 col-xs-12 infinity-form">
 					<!-- Company Logo -->
 					<div class="text-center mb-3 mt-5">
-						<img src="finaltee.png" width="150px">
+						<img src="img/finaltee.png" width="150px">
 					</div>
 					<div c
 					lass="text-center mb-4">
@@ -38,11 +68,11 @@
 						<!-- Input Box -->
 						<div class="form-input">
 							<span><i class="fa fa-envelope-o"></i></span>
-							<input type="email" name="Email" placeholder="Email Address" tabindex="10"required>
-						</div>
+							<input name="username" type="text" id="text" placeholder="Username" tabindex="10"required>
+						</div>	
 						<div class="form-input">
 							<span><i class="fa fa-lock"></i></span>
-							<input type="password" name="pass" placeholder="Password" required>
+							<input type="password" name="password" id="password" placeholder="Password" required>
 						</div>
 						<div class="row mb-3">
 						<!-- Remember Checkbox -->
@@ -55,24 +85,14 @@
 			 	    </div>
 			 	    <!-- Login Button -->
 			      <div class="mb-3"> 
-							<button type="submit" name="Submit" class="btn btn-block" class="text-white"><a href="homepage.php">Login</button></a>
-							<form method="POST" action="HomePage.php">
-
-						</div> 
+							<button type="submit" name="submit" class="btn btn-block" class="text-white">Login</button>
+							<!--<form method="POST" action="login.php">-->
+					</div> 
 						<div class="text-center mb-2 text-black">
 			        <a href="reset.html" class="forget-link">Forgot password?</a>
 			      </div>
 						<div class="text-center mb-2">
-		         	<div class="text-center mb-2 text-black">or login with</div>
 		                    	
-		         	<!-- Facebook Button -->
-		         	<a href="" class="btn btn-social btn-facebook">facebook</a>
-
-		         	<!-- Google Button -->
-							<a href="" class="btn btn-social btn-google">google</a>
-
-							<!-- Twitter Button -->
-							<a href="" class="btn btn-social btn-twitter">twitter</a>
 						</div>
 						<div class="text-center mb-5 text-black">Don't have an account? 
 							<a class="register-link" href="register.php">Register here</a>

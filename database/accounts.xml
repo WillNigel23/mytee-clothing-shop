@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<accounts>
+  <account>
+    <user_id>0</user_id>
+    <fullname>Nicole Bernal</fullname>
+    <username>nicole</username>
+    <password>password</password>
+  </account>
+</accounts>
