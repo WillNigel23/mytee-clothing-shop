@@ -1,33 +1,3 @@
-<?php
-session_start();
-$username = $_POST["username"];
-$password = $_POST["password"];
-
-$xml = new DOMDocument();
-$xml->load("database/accounts.xml");
-
-$accounts = $xml->getElementsByTagName("account");
-
-$flag = 0;
-foreach($accounts as $account) {
-	$username_db = $account->getElementsByTagName("username")->item(0)->nodeValue;
-	$password_db = $account->getElementsByTagName("password")->item(0)->nodeValue;
-    $user_id = $account->getElementsByTagName("user_id")->item(0)->nodeValue;
-	if($username === $username_db) {
-		$flag = 1;
-		if($password === $password_db) {
-            echo "login";
-			$_SESSION["username"] = $username;
-            $_SESSION["user_id"] = $user_id;
-        } else {
-		 echo "password_not_found";
-        }
-		break;
-	}
-}
-echo $flag===0 ? "username_not_found" : "";
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,12 +33,11 @@ echo $flag===0 ? "username_not_found" : "";
 			   
 			    </div>
 			    <!-- Form -->
-					<form class="px-3">
-						 <form action="login.php" method="post">
+					<form class="px-3" action="login.php" method="post">
 						<!-- Input Box -->
 						<div class="form-input">
 							<span><i class="fa fa-envelope-o"></i></span>
-							<input name="username" type="text" id="text" placeholder="Username" tabindex="10"required>
+							<input name="username" type="text" id="username" placeholder="Username" tabindex="10"required>
 						</div>	
 						<div class="form-input">
 							<span><i class="fa fa-lock"></i></span>
@@ -95,7 +64,7 @@ echo $flag===0 ? "username_not_found" : "";
 		                    	
 						</div>
 						<div class="text-center mb-5 text-black">Don't have an account? 
-							<a class="register-link" href="register.php">Register here</a>
+							<a class="register-link" href="registerform.php">Register here</a>
 			     	</div>
 			     	<div class="g-recaptcha" data-sitekey="6Le4DccfAAAAAOAd7J8E4XmI7vWB0qG32YxxkHGs"></div>
 				

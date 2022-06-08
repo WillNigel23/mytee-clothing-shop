@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<products>
+    <product>
+        <prod_id>0</prod_id>
+        <prod_category>New Collection</prod_category>
+        <prod_name>Sunny Shirt</prod_name>
+        <prod_price>450</prod_price>
+        <prod_rating>4.5</prod_rating>
+        <prod_img>img/sunny.png</prod_img>
+        <prod_description>lorem</prod_description>
+    </product>
+    <product>
+        <prod_id>0</prod_id>
+        <prod_category>New Collection</prod_category>
+        <prod_name>Off High</prod_name>
+        <prod_price>430</prod_price>
+        <prod_rating>4.5</prod_rating>
+        <prod_img>img/sunny.png</prod_img>
+        <prod_description>lorem</prod_description>
+    </product>
+    <product>
+        <prod_id>0</prod_id>
+        <prod_category>New Collection</prod_category>
+        <prod_name>Off High White Shirt</prod_name>
+        <prod_price>430</prod_price>
+        <prod_rating>4.5</prod_rating>
+        <prod_img>img/sunny.png</prod_img>
+        <prod_description>lorem</prod_description>
+    </product>
+    <product>
+        <prod_id>0</prod_id>
+        <prod_category>Special Collection</prod_category>
+        <prod_name>Sunny Shirt</prod_name>
+        <prod_price>450</prod_price>
+        <prod_rating>4.5</prod_rating>
+        <prod_img>img/sunny.png</prod_img>
+        <prod_description>lorem</prod_description>
+    </product>
+    <product>
+        <prod_id>0</prod_id>
+        <prod_category>Special Collection</prod_category>
+        <prod_name>Off High</prod_name>
+        <prod_price>430</prod_price>
+        <prod_rating>4.5</prod_rating>
+        <prod_img>img/sunny.png</prod_img>
+        <prod_description>lorem</prod_description>
+    </product>
+    <product>
+        <prod_id>0</prod_id>
+        <prod_category>Special Collection</prod_category>
+        <prod_name>Off High White Shirt</prod_name>
+        <prod_price>430</prod_price>
+        <prod_rating>4.5</prod_rating>
+        <prod_img>img/sunny.png</prod_img>
+        <prod_description>lorem</prod_description>
+    </product>
+    <product>
+        <prod_id>0</prod_id>
+        <prod_category>Best Sellers</prod_category>
+        <prod_name>Sunny Shirt</prod_name>
+        <prod_price>450</prod_price>
+        <prod_rating>4.5</prod_rating>
+        <prod_img>img/sunny.png</prod_img>
+        <prod_description>lorem</prod_description>
+    </product>
+    <product>
+        <prod_id>0</prod_id>
+        <prod_category>Best Sellers</prod_category>
+        <prod_name>Off High</prod_name>
+        <prod_price>430</prod_price>
+        <prod_rating>4.5</prod_rating>
+        <prod_img>img/sunny.png</prod_img>
+        <prod_description>lorem</prod_description>
+    </product>
+    <product>
+        <prod_id>0</prod_id>
+        <prod_category>Best Sellers</prod_category>
+        <prod_name>Off High White Shirt</prod_name>
+        <prod_price>430</prod_price>
+        <prod_rating>4.5</prod_rating>
+        <prod_img>img/sunny.png</prod_img>
+        <prod_description>lorem</prod_description>
+    </product>
+</products>

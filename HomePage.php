@@ -1,3 +1,45 @@
+<?php
+    session_start();
+    if(empty($_SESSION["username"])) header("Location: index.php");
+    $xml = simplexml_load_file("database/products.xml");
+    $products = array();
+    $new_collection = array();
+    $special_collection = array();
+    foreach($xml->product as $product) {
+        $products[] = array(
+            'prod_id'=>(string)$product->prod_id,
+            'prod_category'=>(string)$product->prod_category,
+            'prod_name'=>(string)$product->prod_name,
+            'prod_price'=>(string)$product->prod_price,
+            'prod_rating'=>(string)$product->prod_rating,
+            'prod_img'=>(string)$product->prod_img,
+            'prod_description'=>(string)$product->prod_description,
+        );
+        if((string)$product->prod_category === "New Collection") {
+            $new_collection[] = array(
+                'prod_id'=>(string)$product->prod_id,
+                'prod_category'=>(string)$product->prod_category,
+                'prod_name'=>(string)$product->prod_name,
+                'prod_price'=>(string)$product->prod_price,
+                'prod_rating'=>(string)$product->prod_rating,
+                'prod_img'=>(string)$product->prod_img,
+                'prod_description'=>(string)$product->prod_description,
+            );
+        }
+        else if((string)$product->prod_category === "Special Collection") {
+            $special_collection[] = array(
+                'prod_id'=>(string)$product->prod_id,
+                'prod_category'=>(string)$product->prod_category,
+                'prod_name'=>(string)$product->prod_name,
+                'prod_price'=>(string)$product->prod_price,
+                'prod_rating'=>(string)$product->prod_rating,
+                'prod_img'=>(string)$product->prod_img,
+                'prod_description'=>(string)$product->prod_description,
+            );
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,155 +119,36 @@
                     <button type = "button" class = "btn m-2 text-dark" data-filter = ".new">Next</button></a>
 
                 </div>
-
                 <div class = "collection-list mt-4 row gx-0 gy-3">
-                    <div class = "col-md-6 col-lg-4 col-xl-4 p-2 best">
-                        <div class = "collection-img position-relative">
-                            <img src = "img/sunny.png" class = "w-100">
-                            <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                    <?php 
+                        foreach($new_collection as $product) {
+                            echo '
+                            <div class = "col-md-6 col-lg-4 col-xl-4 p-2 best">
+                                <div class = "collection-img position-relative">
+                                    <img src = "'.$product["prod_img"].'" class = "w-100">
+                                    <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
+                                </div>
+                                <div class = "text-center">
+                                    <div class = "rating mt-3">
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                    </div>
+                                    <p class = "text-capitalize my-1">'.$product["prod_name"].'</p>
+                                    <span class = "fw-bold">Php '.$product["prod_price"].'</span><br>
+                                    <form action="addCart.php" method="post">
+                                    <input type="hidden" name="name" value="'.$product["prod_name"].'">
+                                    <input type="hidden" name="price" value="'.$product["prod_price"].'">
+                                    <input type="text" name="qty" placeholder="Quantity" class="form-control">
+                                    <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
+                                    </form>
+                                </div>
                             </div>
-                            <p class = "text-capitalize my-1">Sunny Shirt</p>
-                            <span class = "fw-bold">Php 450</span><br>
-                             <form action="addCart.php" method="post">
-                        <input type="hidden" name="name" value="Shirt1">
-                        <input type="hidden" name="price" value="3000">
-                        <input type="text" name="qty" placeholder="Quantity" class="form-control">
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </form>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-4 p-2 feat">
-                        <div class = "collection-img position-relative">
-                            <img src = "img/shirt2.png" class = "w-100">
-                            <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">Off High</p>
-                            <span class = "fw-bold">Php 450</span><br>
-                             <form action="addCart.php" method="post">
-                        <input type="hidden" name="name" value="Shirt2">
-                        <input type="hidden" name="price" value="3000">
-                        <input type="text" name="qty" placeholder="Quantity" class="form-control">
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </form>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-4 p-2 new">
-                        <div class = "collection-img position-relative">
-                            <img src = "img/shirt3.png" class = "w-100">
-                            <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">Off High White Shirt</p>
-                            <span class = "fw-bold">Php 450</span><br>
-                             <form action="addCart.php" method="post">
-                        <input type="hidden" name="name" value="Shirt3">
-                        <input type="hidden" name="price" value="3000">
-                        <input type="text" name="qty" placeholder="Quantity" class="form-control">
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </form>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-4 p-2 best">
-                        <div class = "collection-img position-relative">
-                            <img src = "img/shirt4.png" class = "w-100">
-                            <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">Off High Maroon Shirt</p>
-                            <span class = "fw-bold">Php 450</span><br>
-                             <form action="addCart.php" method="post">
-                        <input type="hidden" name="name" value="Shirt4">
-                        <input type="hidden" name="price" value="3000">
-                        <input type="text" name="qty" placeholder="Quantity" class="form-control">
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </form>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-4 p-2 feat">
-                        <div class = "collection-img position-relative">
-                            <img src = "img/shirt5.png" class = "w-100">
-                            <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">Off High Mustard Shirt</p>
-                            <span class = "fw-bold">Php 450</span><br>
-                             <form action="addCart.php" method="post">
-                        <input type="hidden" name="name" value="Shirt5">
-                        <input type="hidden" name="price" value="3000">
-                        <input type="text" name="qty" placeholder="Quantity" class="form-control">
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </form>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-4 p-2 new">
-                        <div class = "collection-img position-relative">
-                            <img src = "img/shirt6.png" class = "w-100">
-                            <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">7th King Shirt</p>
-                            <span class = "fw-bold">Php 450</span><br>
-                             <form action="addCart.php" method="post">
-                        <input type="hidden" name="name" value="Shirt6">
-                        <input type="hidden" name="price" value="3000">
-                        <input type="text" name="qty" placeholder="Quantity" class="form-control">
-                        <input type="submit" class = "btn btn-primary mt-3" value="Add to Cart">
-                        </form>
-                        </div>
-                    </div>
-
-                  
-                        </div>
-                    </div>
+                            ';
+                        };
+                    ?>
                 </div>
             </div>
         </div>
@@ -240,119 +163,29 @@
             </div>
 
             <div class = "special-list mt-4 row gx-0 gy-3">
-                    <div class = "col-md-6 col-lg-4 col-xl-4 p-2 best">
-                        <div class = "special-img position-relative">
-                            <img src = "img/shirt8.png" class = "w-100">
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                <?php
+                    foreach($special_collection as $product) {
+                        echo '
+                            <div class = "col-md-6 col-lg-4 col-xl-4 p-2 best">
+                                <div class = "special-img position-relative">
+                                    <img src = "'.$product["prod_img"].'" class = "w-100">
+                                </div>
+                                <div class = "text-center">
+                                    <div class = "rating mt-3">
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                        <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                                    </div>
+                                    <p class = "text-capitalize my-1">'.$product["prod_name"].'</p>
+                                    <span class = "fw-bold">Php '.$product["prod_price"].'</span><br>
+                                    <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
+                                </div>
                             </div>
-                            <p class = "text-capitalize my-1">Pilipinas Shirt</p>
-                            <span class = "fw-bold">Php 650</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-4 p-2 feat">
-                        <div class = "special-img position-relative">
-                            <img src = "img/shirt9.png" class = "w-100">
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">Daily Grind White Shirt</p>
-                            <span class = "fw-bold">Php 650</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-4 p-2 new">
-                        <div class = "special-img position-relative">
-                            <img src = "img/shirt10.png" class = "w-100">
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">Daily Grind Black Shirt</p>
-                            <span class = "fw-bold">Php 650</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-4 p-2 best">
-                        <div class = "special-img position-relative">
-                            <img src = "img/shirt11.png" class = "w-100">
-                            
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">Daily Grind Gray Shirt</p>
-                            <span class = "fw-bold">Php 650</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-4 p-2 feat">
-                        <div class = "special-img position-relative">
-                            <img src = "img/shirt14.png" class = "w-100">
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">Daily Grind Shirt</p>
-                            <span class = "fw-bold">Php 650</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-4 p-2 new">
-                        <div class = "special-img position-relative">
-                            <img src = "img/shirt17.png" class = "w-100">
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                                <span class = "text-primary"><i class = "fas fa-star"></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">Daily Grind Yellow Shirt</p>
-                            <span class = "fw-bold">Php 650</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
-
-                  
-                        </div>
-                    </div>
-                </div>
+                        ';
+                    };
+                ?>
             </div>
         </div>
     </section>
@@ -403,21 +236,21 @@
                 <div class = "col-md-6 col-lg-4 row g-3">
                     <h3 class = "fs-5">Top Rated</h3>
                     <div class = "d-flex align-items-start justify-content-start">
-                        <img src = "shirt13.png" alt = "" class = "img-fluid pe-3 w-25">
+                        <img src = "img/shirt13.png" alt = "" class = "img-fluid pe-3 w-25">
                         <div>
                             <p class = "mb-0">7th king White Shirt</p>
                             <span>Php 650.00</span>
                         </div>
                     </div>
                     <div class = "d-flex align-items-start justify-content-start">
-                        <img src = "shirt18.png" alt = "" class = "img-fluid pe-3 w-25">
+                        <img src = "img/shirt18.png" alt = "" class = "img-fluid pe-3 w-25">
                         <div>
                             <p class = "mb-0">Off high Shirt</p>
                             <span>Php 650</span>
                         </div>
                     </div>
                     <div class = "d-flex align-items-start justify-content-start">
-                        <img src = "Sunny.png" alt = "" class = "img-fluid pe-3 w-25">
+                        <img src = "img/sunny.png" alt = "" class = "img-fluid pe-3 w-25">
                         <div>
                             <p class = "mb-0">Sunny Shirt</p>
                             <span>Php 650</span>
@@ -428,21 +261,21 @@
                 <div class = "col-md-6 col-lg-4 row g-3">
                     <h3 class = "fs-5">Best Selling</h3>
                     <div class = "d-flex align-items-start justify-content-start">
-                        <img src = "shirt19.png" alt = "" class = "img-fluid pe-3 w-25">
+                        <img src = "img/shirt19.png" alt = "" class = "img-fluid pe-3 w-25">
                         <div>
                             <p class = "mb-0">Off High Wonderer</p>
                             <span>Php 550</span>
                         </div>
                     </div>
                     <div class = "d-flex align-items-start justify-content-start">
-                        <img src = "shirt20.png" alt = "" class = "img-fluid pe-3 w-25">
+                        <img src = "img/shirt20.png" alt = "" class = "img-fluid pe-3 w-25">
                         <div>
                             <p class = "mb-0">Off High Time Space</p>
                             <span>Php 550</span>
                         </div>
                     </div>
                     <div class = "d-flex align-items-start justify-content-start">
-                        <img src = "shirt21.png" alt = "" class = "img-fluid pe-3 w-25">
+                        <img src = "img/shirt21.png" alt = "" class = "img-fluid pe-3 w-25">
                         <div>
                             <p class = "mb-0">Daily Grind Play for Real</p>
                             <span>Php 650</span>
@@ -453,21 +286,21 @@
                 <div class = "col-md-6 col-lg-4 row g-3">
                     <h3 class = "fs-5">On Sale</h3>
                     <div class = "d-flex align-items-start justify-content-start">
-                        <img src = "shirt5.png" alt = "" class = "img-fluid pe-3 w-25">
+                        <img src = "img/shirt5.png" alt = "" class = "img-fluid pe-3 w-25">
                         <div>
                             <p class = "mb-0">Off High Mustard Shirt</p>
                             <span>Php 450</span>
                         </div>
                     </div>
                     <div class = "d-flex align-items-start justify-content-start">
-                        <img src = "shirt6.png" alt = "" class = "img-fluid pe-3 w-25">
+                        <img src = "img/shirt6.png" alt = "" class = "img-fluid pe-3 w-25">
                         <div>
                             <p class = "mb-0">7th King Shirt</p>
                             <span>Php 450</span>
                         </div>
                     </div>
                     <div class = "d-flex align-items-start justify-content-start">
-                        <img src = "shirt4.png" alt = "" class = "img-fluid pe-3 w-25">
+                        <img src = "img/shirt4.png" alt = "" class = "img-fluid pe-3 w-25">
                         <div>
                             <p class = "mb-0">Off High Maroon Shirt</p>
                             <span>Php 450</span>

@@ -6,4 +6,10 @@
     <username>nicole</username>
     <password>password</password>
   </account>
+  <account>
+    <user_id>1</user_id>
+    <fullname>Will</fullname>
+    <username>will</username>
+    <password>password</password>
+  </account>
 </accounts>

@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    $username = $_SESSION["username"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,6 +63,9 @@
                     </li>
                     <li class = "nav-item px-2 py-2 border-0">
                         <a class = "nav-link text-uppercase text-dark" href = "#popular">popular</a>
+                    </li>
+                    <li class = "nav-item px-2 py-2 border-0">
+                        <a class = "nav-link text-uppercase text-dark" href = "logout.php">LOGOUT(<?php echo $username; ?>)</a>
                     </li>
                
 			   </ul>

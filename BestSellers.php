@@ -12,58 +12,14 @@
     <link rel = "stylesheet" href = "bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <!-- custom css -->
     <link rel = "stylesheet" href = "css/main.css">
-    <link rel = "stylesheet" href="BestSellers.css">
+    <link rel = "stylesheet" href="styles/BestSellers.css">
 </head>
 <body>
     
     <!-- navbar -->
-    <nav class = "navbar navbar-expand-lg navbar-light py-1 fixed-top">
-        <div class = "container">
-            <a class = "navbar-brand d-flex justify-content-between align-items-center order-lg-0" href = "index.html">
-                <img src = "finaltee.png" alt = "site icon">
-                
-            </a>
-
-            <div class = "order-lg-2 nav-btns">
-                <button type = "button" class = "btn position-relative">
-                    <i class = "fa fa-shopping-cart"></i>
-                    <span class = "position-absolute top-0 start-100 translate-middle badge bg-primary">1</span>
-                </button>
-                <button type = "button" class = "btn position-relative">
-                    <i class = "fa fa-heart"></i>
-                    <span class = "position-absolute top-0 start-100 translate-middle badge bg-primary">1</span>
-                </button>
-                <button type = "button" class = "btn position-relative">
-                    <i class = "fa fa-search"></i>
-                </button>
-            </div>
-
-            <button class = "navbar-toggler border-0" type = "button" data-bs-toggle = "collapse" data-bs-target = "#navMenu">
-                <span class = "navbar-toggler-icon"></span>
-            </button>
-
-            <div class = "collapse navbar-collapse order-lg-1" id = "navMenu">
-                <ul class = "navbar-nav mx-auto text-center">
-                    <li class = "nav-item px-2 py-2">
-                        <a class = "nav-link text-uppercase text-dark" href = "#header">home</a>
-                    </li>
-                    <li class = "nav-item px-2 py-2">
-                        <a class = "nav-link text-uppercase text-dark" href = "#collection">collection</a>
-                    </li>
-                    <li class = "nav-item px-2 py-2">
-                        <a class = "nav-link text-uppercase text-dark" href = "#special">specials</a>
-                    </li>
-                    
-                    <li class = "nav-item px-2 py-2">
-                        <a class = "nav-link text-uppercase text-dark" href = "#about">about us</a>
-                    </li>
-                    <li class = "nav-item px-2 py-2 border-0">
-                        <a class = "nav-link text-uppercase text-dark" href = "#popular">popular</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php
+        include('components/navbar.php')
+    ?>
     <!-- end of navbar -->
 
 
@@ -320,7 +276,7 @@
                     <p> My Tee clothing shop makes it a point to give individuals basic, inexpensive tees. We have the styles you want from the brands you adore in the colors and sizes you need. Avoid the crowds at the mall; we've designed an online shopping experience as convenient for your schedule as it is for your wallet. At My Tee Clothing Shop, we want you to feel at ease, confident, and carefree in your clothing and shopping choices. </p>
                 </div>
                 <div class = "col-lg-6 order-lg-0">
-                    <img src = "finaltee.png" alt = "" class = "img-fluid">
+                    <img src = "img/finaltee.png" alt = "" class = "img-fluid">
                 </div>
             </div>
         </div>
@@ -330,98 +286,9 @@
 
 
     <!-- footer -->
-    <footer class = "bg-dark py-5">
-        <div class = "container">
-            <div class = "row text-white g-4">
-                <div class = "col-md-6 col-lg-3">
-                    <a class = "text-uppercase text-decoration-none brand text-white" href = "index.html">My Tee</a>
-                    <p class = "text-white text-muted mt-3"></p>
-                </div>
-
-                <div class = "col-md-6 col-lg-3">
-                    <h5 class = "fw-light">Links</h5>
-                    <ul class = "list-unstyled">
-                        <li class = "my-3">
-                            <a href = "#" class = "text-white text-decoration-none text-muted">
-                                <i class = "fas fa-chevron-right me-1"></i> Home
-                            </a>
-                        </li>
-                        <li class = "my-3">
-                            <a href = "#" class = "text-white text-decoration-none text-muted">
-                                <i class = "fas fa-chevron-right me-1"></i> Collection
-                            </a>
-                        </li>
-                        <li class = "my-3">
-                            <a href = "#" class = "text-white text-decoration-none text-muted">
-                                <i class = "fas fa-chevron-right me-1"></i> Blogs
-                            </a>
-                        </li>
-                        <li class = "my-3">
-                            <a href = "#" class = "text-white text-decoration-none text-muted">
-                                <i class = "fas fa-chevron-right me-1"></i> About Us
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class = "col-md-6 col-lg-3">
-                    <h5 class = "fw-light mb-3">Contact Us</h5>
-                    <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
-                        <span class = "me-3">
-                            <i class = "fas fa-map-marked-alt"></i>
-                        </span>
-                        <span class = "fw-light">
-                            Robinson's Place, Malolos
-                        </span>
-                    </div>
-                    <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
-                        <span class = "me-3">
-                            <i class = "fas fa-envelope"></i>
-                        </span>
-                        <span class = "fw-light">
-                            myteeclothing@gmail.com
-                        </span>
-                    </div>
-                    <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
-                        <span class = "me-3">
-                            <i class = "fas fa-phone-alt"></i>
-                        </span>
-                        <span class = "fw-light">
-                            +9786 6776 236
-                        </span>
-                    </div>
-                </div>
-
-                <div class = "col-md-6 col-lg-3">
-                    <h5 class = "fw-light mb-3">Follow Us</h5>
-                    <div>
-                        <ul class = "list-unstyled d-flex">
-                            <li>
-                                <a href = "#" class = "text-white text-decoration-none text-muted fs-4 me-4">
-                                    <i class = "fab fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href = "#" class = "text-white text-decoration-none text-muted fs-4 me-4">
-                                    <i class = "fab fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href = "#" class = "text-white text-decoration-none text-muted fs-4 me-4">
-                                    <i class = "fab fa-instagram"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href = "#" class = "text-white text-decoration-none text-muted fs-4 me-4">
-                                    <i class = "fab fa-pinterest"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php
+        include('components/footer.php')
+    ?>
     <!-- end of footer -->
 
 

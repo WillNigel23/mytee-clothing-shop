@@ -1,7 +1,7 @@
 <?php
 session_start();
-$username = "nicole";
-$password = "password";
+$username = $_POST["username"];
+$password = $_POST["password"];
 
 $xml = new DOMDocument();
 $xml->load("database/accounts.xml");
@@ -16,14 +16,15 @@ foreach($accounts as $account) {
 	if($username === $username_db) {
 		$flag = 1;
 		if($password === $password_db) {
-            echo "login";
+            #echo "login";
 			$_SESSION["username"] = $username;
             $_SESSION["user_id"] = $user_id;
         } else {
-		 echo "password_not_found";
+			#echo "password_not_found";
         }
 		break;
 	}
 }
-echo $flag===0 ? "username_not_found" : "";
+header("location: index.php");
+#echo $flag===0 ? "username_not_found" : "";
 ?>
