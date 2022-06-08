@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@400;700&family=Poppins:ital,wght@0,400;0,600;1,200&display=swap');
+:root{
+    font-family: 'Kaisei Tokumin', serif;
+font-family: 'Poppins', sans-serif;
+}
+.navbar-brand{
+            max-width: 100px;
+            float: left;
+            
+}
+        .navbar-brand img {
+            max-width: 100%;
+            fill: #fff;
+}
